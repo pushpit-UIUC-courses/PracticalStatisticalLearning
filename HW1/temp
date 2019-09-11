@@ -1,0 +1,25 @@
+#     print("beta_g)
+# delta = 0.1
+# epsilon = 10e-6
+# found = False
+
+# for i in range(maxIter):
+# xx = np.dot(X_scaled, beta)
+# print(xx.shape)
+# m = len(Y_scaled)
+#     cost_history = np.zeros(iterations)
+#     theta_history = np.zeros((iterations,2))
+#     for it in range(iterations):
+
+# for i in range(maxIter):
+#     preds = X_scaled.dot(beta)
+#     error = preds - Y_scaled
+#     gradient = X_scaled.T.dot(error) / X_scaled.shape[0]
+#     betaNew = beta - delta * gradient
+#     print("Iter: ", i, "Data: ", prediction.shape, error.shape, gradient.shape, betaNew.shape) 
+#     dis = np.linalg.norm(betaNew - beta)
+#     if dis < epsilon:
+# #         print("Iter: ", i , "Final Beta: ", betaNew)
+#         break
+#     print("Iter: ", dis)
+#     beta = betaNew
