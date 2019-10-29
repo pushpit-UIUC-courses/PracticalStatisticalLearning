@@ -7,7 +7,7 @@ output:
     toc_depth: 2
 ---
 #### Loading the necessary libraries
-```{r results="hide"}
+```{r results="hide", warning=FALSE, message=FALSE, echo=FALSE}
   library(mlbench)
   library(glmnet)
   library(zoo)
