@@ -1,0 +1,164 @@
+Coursera
+
+Skip to Main Content
+
+Pushpit Saxena
+CS 598: Practical Statistical Learning
+Week 7
+Quiz #5
+Prev
+Next
+
+Week 6 Information
+
+Regression Trees
+
+Random Forest
+
+GBM
+
+Week 6 Graded Activities
+Reading: ReadingRead before taking the quiz
+10 min
+Quiz: Quiz #5
+9 questions
+This item will be available September 29, 12:00 PM EDT - October 20, 2:59 AM EDT. Please contact your course team with any questions.
+Graded Assignment: Homework 4
+Submitted
+QUIZ • 1H
+Quiz #5
+Submit your assignment
+DUEDec 16, 2:59 AM EST
+ATTEMPTS3 left
+Receive grade
+Grade
+—
+
+
+
+Quiz #5
+Graded Quiz • 1h
+Due Dec 16, 2:59 AM EST
+Quiz #5
+TOTAL POINTS 9
+
+1.Question 1
+Consider a regression tree with 5 leaf nodes, which is trained based on a data set with 2 features and 20 samples. What's the maximum number of unique predictions this tree model could return?
+
+
+5 -- My answer
+
+
+25
+
+
+2
+
+
+10
+
+1 point
+
+2.Question 2
+See the R output below for a regression tree, where "myfit2" is a tree obtained from the original fit "myfit" with "cp = 0.02".
+
+
+How many leaf nodes does the tree "myfit2" have?
+
+7
+1 point
+
+3.Question 3
+Load BostonHousing1.Rdata. Fit a randomforest to predict Y. See the R output below.
+
+
+How many trees are in this forest?
+
+500
+1 point
+
+4.Question 4
+Continue with Question 3. The same R output is listed below.
+
+
+When building trees in this forest, how many predictors are available for splitting at each node?
+
+5
+1 point
+
+5.Question 5
+Continue with Question 3. The same R output is listed below.
+
+
+The built-in prediction for the 1st sample is 3.2581.How many trees are used for this prediction?
+
+184
+1 point
+
+6.Question 6
+Continue with Question 3. The same R output is listed below.
+
+
+Consider a house with almost the same feature as the 1st sample except being a little older with age = 5. The prediction provided by randomforest for this new house is 3.2056. How many trees are used for this prediction?
+
+500
+1 point
+
+7.Question 7
+In random forest, what's randomly selected?
+
+
+For each node, we randomly select a set of features as the split candidates from the full set of p features. -- My answer
+
+
+For each node, we randomly select a feature from the full set of p features to split.
+
+
+We randomly select the number of trees in the forest.
+
+
+For each tree in the forest, we randomly select a set of features as the split candidates from the full set of p features.
+
+1 point
+
+8.Question 8
+Which of the following is/are true about randomForest?
+
+
+The training process can be parallelized, e.g., we can train individual tress on different machines and then combine them. -- My answer
+
+
+Each individual tree is built on a subset of observations. -- my answer
+
+
+Learning rate is a hyper-parameter we need to tune.
+
+
+We need to prune each individual tree in random forest.
+
+
+Random forest is an algorithm for improving the performance by aggregating many small trees (i.g., regression trees with a small number of leaf nodes).
+
+1 point
+
+9.Question 9
+Which of the following is/are true about GBM?
+
+
+Boosting is an algorithm for improving the performance by aggregating many small trees (i.g., regression trees with a small number of leaf nodes). -- my answer
+
+
+The training process can be parallelized, e.g., we can train individual tress on different machines and then combine them.
+
+
+We need to prune each individual tree in the forest.
+
+
+Learning rate is a hyper-parameter we need to tune. -- my answer
+
+
+The algorithm provides the option of having each individual tree built on a subset of observations. -- my answer
+
+1 point
+
+I, Pushpit Saxena, understand that submitting work that isn’t my own may result in permanent failure of this course or deactivation of my Coursera account. Learn more about Coursera’s Honor Code

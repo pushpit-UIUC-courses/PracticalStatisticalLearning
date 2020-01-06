@@ -1,0 +1,113 @@
+---
+title: 'STAT 542 / CS 598: Homework 7'
+author: "Pushpit Saxena (netid: pushpit2)"
+header-includes:
+  - \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: 2
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_depth: '2'
+---
+
+```{r setup, include=FALSE}
+  knitr::opts_chunk$set(include = TRUE)  # TRUE for solution; FALSE for questions set
+
+  knitr::opts_chunk$set(echo = TRUE)
+  knitr::opts_chunk$set(message = FALSE)
+  knitr::opts_chunk$set(warning = FALSE)
+  knitr::opts_chunk$set(fig.height = 6, fig.width = 8, out.width = '90%', fig.align = "center")
+  options(width = 90)
+```
+
+```{css, echo=FALSE}
+.solution {
+background-color: #e6ffe6;
+}
+```
+
+
+
+```{r}
+full_data <- read.csv("winemag-data-130k-v2.csv")
+
+print(colSums(is.na(full_data)))
+
+full_data <- full_data[!is.na(full_data$price), ]
+
+unique_vals <- lapply(full_data, unique)
+sapply(unique_vals, length)
+
+dim(full_data)
+
+library(dplyr)
+library(tidyr)
+
+dd <- as.data.frame(full_data%>% group_by(title, winery) %>% summarise(distinct_reviews = n_distinct(description), distinct_variety=n_distinct(variety),
+                                                                avg_points = mean(points)))
+dd[order(-dd$distinct_reviews, -dd$distinct_variety, -dd$avg_points),]
+
+
+
+## 75% of the sample size
+smp_size <- floor(0.75 * nrow(full_data))
+set.seed(123)
+train_ind <- sample(seq_len(nrow(full_data)), size = smp_size)
+
+train_data <- full_data[train_ind,]
+test_data <- full_data[-train_ind,]
+
+
+lm.basic <- lm(points ~ price, data = train_data)
+
+
+pred <- predict(lm.basic, new_data=test_data)
+
+library(pROC)
+
+
+roc_obj <- roc(test_data$points, pred)
+
+
+sqrt(mean(lm.basic$residuals^2))
+RSS <- c(crossprod(lm.basic$residuals))
+MSE <- RSS / length(lm.basic$residuals)
+sqrt(MSE)
+summary(lm.basic)
+library(ggplot2)
+
+ggplot(data = full_data, aes(x= points, colour = I('black'), fill = I('#099DD9')))+
+  geom_histogram(binwidth = 1)+
+  labs(x = "Points", y= "Frequency", title = "Distribution of points")
+
+
+library(randomForest)
+#set.seed(1234)
+regressor = randomForest(x = train_data[, c(2, 6, 11)], #returns a dataframe
+y = train_data$points, #returns a vector
+ntree = 500, mtry = 5, nPerm = 4, nodesize = 2)
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
